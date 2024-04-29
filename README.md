@@ -1,1 +1,0 @@
-# Decentralised-funding-platform
