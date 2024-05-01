@@ -180,6 +180,28 @@
               <p style="font-size: 20px; margin-bottom: 20px;margin-left: 28px;color:chartreuse;">@anshit!</p>
               <li class="nav-item ml-3">
                 <a href="/logout" class="btn ml-lg-auto btn-bordered-white">Logout</a>
+
+                  <!---new meta button-->
+              <button id="button-33" role="button"><meta></button>
+              <button id="connect-button">Connect Metamask</button>
+<script>
+    document.getElementById( 'connect-button').addEventListener('click', event => {
+        let account;
+        let button = event.target;
+        ethereum.request({method: 'eth_requestAccounts'}).then(accounts => {
+            account = accounts[0];
+            console.log(account);
+            button.textContent = account;
+
+            ethereum.request({method: 'eth_getBalance' , params: [account, 'latest']}).then(result => {
+            console.log(result);
+            let wei = parseInt(result,16);
+            let balance = wei / (10**18);
+            console.log(balance + " ETH");
+         });
+    });
+});
+</Script>
               </li>
               
             </ul>
